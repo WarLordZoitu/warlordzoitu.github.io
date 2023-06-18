@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark Theme - Retro VHS Style</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background-image: url("https://media.discordapp.net/attachments/1119881923725119578/1119893305740767282/Rise_Up.00_00_03_20.Still001.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-blur: 10px;
+            filter: grayscale(100%);
+            border: 10px solid #000000;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8) inset;
+            animation: vhs-effect 10s infinite;
+        }
+
+        @keyframes vhs-effect {
+            0% {
+                transform: translate(-2px, -2px);
+            }
+            50% {
+                transform: translate(2px, 2px);
+            }
+            100% {
+                transform: translate(-2px, -2px);
+            }
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            cursor: pointer;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        .option:hover {
+            background-color: #333333;
+        }
+
+        .option.selected {
+            background-color: #666666;
+        }
+
+        .option img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .option:hover img {
+            animation: pulsate 2s infinite;
+        }
+
+        .option a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 10px;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            transition: text-shadow 0.3s ease;
+        }
+
+        .option a:hover {
+            text-shadow: 4px 4px 6px rgba(255, 255, 255, 0.8);
+        }
+
+        .content {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        #links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: text-shadow 0.3s ease;
+        }
+
+        #links a:hover {
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulsate {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+                text-shadow: 0 0 10px #FF0000;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+                text-shadow: 0 0 20px #FF0000;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+                text-shadow: 0 0 10px #FF0000;
+            }
+        }
+
+        /* VHS Glitch Effect Overlay */
+        .vhs-overlay {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("https://media.discordapp.net/attachments/1119881923725119578/1119890547000234064/VHS_Overlay_1.gif");
+            opacity: 0.5;
+            mix-blend-mode: screen;
+            z-index: 9999;
+            animation: vhs-overlay-animation 5s infinite;
+        }
+
+        @keyframes vhs-overlay-animation {
+            0% {
+                transform: translate(-2px, -2px);
+            }
+            50% {
+                transform: translate(2px, 2px);
+            }
+            100% {
+                transform: translate(-2px, -2px);
+            }
+        }
+    </style>
+    <script>
+        function selectOption(option) {
+            var options = document.getElementsByClassName('option');
+            for (var i = 0; i < options.length; i++) {
+                options[i].classList.remove('selected');
+            }
+            option.classList.add('selected');
+
+            var contents = document.getElementsByClassName('content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            document.getElementById(option.dataset.content).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <div class="vhs-overlay"></div> <!-- Add VHS glitch effect overlay -->
+    <h2>Pick Your God</h2>
+    <div class="option zoitu selected" onclick="selectOption(this)" data-content="zoitu">
+        <img src="https://cdn.discordapp.com/avatars/922785411984687126/99ee060fb6ad932ecf49fdf0e7c7a9e8.webp?size=512" alt="Zoitu Icon">
+        <a href="#">ZOITU</a>
+    </div>
+    <div class="option kur" onclick="selectOption(this)" data-content="kur">
+        <img src="https://cdn.discordapp.com/avatars/980940803591520306/dfc559b47294de8ad8e47917bc011968.webp?size=512&amp;width=0&amp;height=0" alt="KUR Icon">
+        <a href="#">KUR</a>
+    </div>
+    <div class="option xesp" onclick="selectOption(this)" data-content="xesp">
+        <img src="https://cdn.discordapp.com/avatars/1117989389465833595/a4b6715b84105aa623c4761a518e06dd.webp?size=512&width=0&height=0" alt="XESP Icon">
+        <a href="#">XESP</a>
+    </div>
+
+    <div id="zoitu" class="content active">
+        <h1>ZOITU</h1>
+        <p>Pedo Extorter/Doxxer</p>
+        <div id="links">
+            <a href="https://t.me/egirlextortion">Telegram</a>
+            <a href="https://doxbin.com/user/egirlextortion">Doxbin</a>
+            <a href="https://discordapp.com/users/922785411984687126">Discord</a>
+        </div>
+    </div>
+
+    <div id="kur" class="content">
+        <h1>Kur</h1>
+        <p>The Rich Nigga</p>
+        <div id="links">
+            <a href="https://www.instagram.com/4taps/">Instagram</a>
+            <a href="https://www.roblox.com/users/1285692/profile">Tiktok</a>
+            <a href="https://discordapp.com/users/980940803591520306">Discord</a>
+        </div>
+    </div>
+
+    <div id="xesp" class="content">
+        <h1>XESP!</h1>
+        <p>XESP The Great</p>
+        <div id="links">
+            <a href="https://www.tiktok.com/@blatantgrim">Tiktok</a>
+            <a href="https://www.youtube.com/channel/UCsS8lO9mFvtc_PoTmfL6dHA?themeRefresh=1">Youtube</a>
+            <a href="https://discordapp.com/users/1117989389465833595">Discord</a>
+        </div>
+    </div>
+</body>
+</html>
